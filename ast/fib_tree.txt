@@ -1,0 +1,85 @@
+Program
+    └── declarations: [3]
+        ├── [0]: VarDecl
+        │   ├── kind: 'const'
+        │   ├── name: 'std'
+        │   ├── type_name: None
+        │   └── value: CallExpr
+        │       ├── callee: BuiltinIdentifier
+        │       │   └── name: '@import'
+        │       └── args: [1]
+        │           └── [0]: StringLiteral
+        │               └── value: '"std"'
+        ├── [1]: FnDecl
+        │   ├── name: 'fib'
+        │   ├── params: [1]
+        │   │   └── [0]: Param
+        │   │       ├── name: 'n'
+        │   │       └── type_name: NamedType
+        │   │           └── name: 'u32'
+        │   ├── return_type: NamedType
+        │   │   └── name: 'u32'
+        │   └── body: Block
+        │       └── statements: [2]
+        │           ├── [0]: IfStmt
+        │           │   ├── condition: BinaryOp
+        │           │   │   ├── op: '<='
+        │           │   │   ├── left: Identifier
+        │           │   │   │   └── name: 'n'
+        │           │   │   └── right: IntLiteral
+        │           │   │       └── value: 1
+        │           │   ├── then_block: Block
+        │           │   │   └── statements: [1]
+        │           │   │       └── [0]: ReturnStmt
+        │           │   │           └── value: Identifier
+        │           │   │               └── name: 'n'
+        │           │   └── else_block: None
+        │           └── [1]: ReturnStmt
+        │               └── value: BinaryOp
+        │                   ├── op: '+'
+        │                   ├── left: CallExpr
+        │                   │   ├── callee: Identifier
+        │                   │   │   └── name: 'fib'
+        │                   │   └── args: [1]
+        │                   │       └── [0]: BinaryOp
+        │                   │           ├── op: '-'
+        │                   │           ├── left: Identifier
+        │                   │           │   └── name: 'n'
+        │                   │           └── right: IntLiteral
+        │                   │               └── value: 1
+        │                   └── right: CallExpr
+        │                       ├── callee: Identifier
+        │                       │   └── name: 'fib'
+        │                       └── args: [1]
+        │                           └── [0]: BinaryOp
+        │                               ├── op: '-'
+        │                               ├── left: Identifier
+        │                               │   └── name: 'n'
+        │                               └── right: IntLiteral
+        │                                   └── value: 2
+        └── [2]: FnDecl
+            ├── name: 'main'
+            ├── params: [0]
+            ├── return_type: NamedType
+            │   └── name: 'void'
+            └── body: Block
+                └── statements: [1]
+                    └── [0]: ExprStmt
+                        └── expr: CallExpr
+                            ├── callee: FieldAccess
+                            │   ├── object: FieldAccess
+                            │   │   ├── object: Identifier
+                            │   │   │   └── name: 'std'
+                            │   │   └── field: 'debug'
+                            │   └── field: 'print'
+                            └── args: [2]
+                                ├── [0]: StringLiteral
+                                │   └── value: '"fib = {}\\n"'
+                                └── [1]: TupleLiteral
+                                    └── items: [1]
+                                        └── [0]: CallExpr
+                                            ├── callee: Identifier
+                                            │   └── name: 'fib'
+                                            └── args: [1]
+                                                └── [0]: IntLiteral
+                                                    └── value: 10
